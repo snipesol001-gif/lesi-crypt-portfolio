@@ -1,0 +1,324 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   LESI CRYPT design tokens, Tailwind v4 CSS-first configuration
+------------------------------------------------------------------- */
+
+@theme {
+  /* Monochrome palette */
+  --color-ink: #0a0a0b;       /* near black, page base */
+  --color-coal: #151517;      /* charcoal, raised surfaces */
+  --color-iron: #101013;      /* subtle tonal band between sections */
+  --color-graphite: #26262b;  /* borders, hard offset shadows */
+  --color-concrete: #8c8c90;  /* secondary text */
+  --color-bone: #d8d5cf;      /* light concrete, primary text */
+
+  /* Typography */
+  --font-display: "Anton", "Arial Narrow", Impact, sans-serif;
+  --font-sans: "Space Grotesk Variable", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, "Cascadia Mono", monospace;
+
+  /* Hard offset shadows, no blur, no glow */
+  --shadow-hard-sm: 4px 4px 0 0 #26262b;
+  --shadow-hard: 6px 6px 0 0 #26262b;
+  --shadow-hard-lg: 9px 9px 0 0 #26262b;
+
+  /* Motion */
+  --animate-ticker: ticker-scroll 60s linear infinite;
+
+  @keyframes ticker-scroll {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Base styles
+------------------------------------------------------------------- */
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-bone);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Sticky nav must never cover section headings */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  ::selection {
+    background-color: var(--color-bone);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-bone);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Shared components
+------------------------------------------------------------------- */
+
+@layer components {
+  /* Consistent content container */
+  .wrap {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 72rem;
+    padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  /* Section vertical rhythm */
+  .section-pad {
+    padding-block: clamp(4.5rem, 9vw, 7.5rem);
+  }
+
+  /* Small uppercase mono label */
+  .label-mono {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-concrete);
+  }
+
+  /* Desktop nav link with growing underline */
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -0.35rem;
+    height: 1px;
+    background-color: var(--color-bone);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 220ms ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease,
+      background-color 160ms ease,
+      color 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .btn-primary {
+    background-color: var(--color-bone);
+    border-color: var(--color-bone);
+    color: var(--color-ink);
+    box-shadow: var(--shadow-hard-sm);
+  }
+
+  .btn-primary:hover {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard);
+  }
+
+  .btn-primary:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 0 #26262b;
+  }
+
+  .btn-ghost {
+    background-color: transparent;
+    border-color: var(--color-concrete);
+    color: var(--color-bone);
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--color-bone);
+    color: var(--color-ink);
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard-sm);
+  }
+
+  .btn-ghost:active {
+    transform: translate(1px, 1px);
+    box-shadow: none;
+  }
+
+  /* Scroll reveal foundation, driven by IntersectionObserver */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 500ms ease,
+      transform 500ms ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Custom utilities
+------------------------------------------------------------------- */
+
+/* Brushed chrome text finish, use sparingly on select display text */
+@utility chrome-text {
+  background-image:
+    repeating-linear-gradient(
+      100deg,
+      rgba(10, 10, 11, 0.22) 0px,
+      rgba(10, 10, 11, 0.22) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    linear-gradient(
+      180deg,
+      #f7f6f2 0%,
+      #d8d5cf 32%,
+      #97948d 52%,
+      #dad7d0 70%,
+      #f7f6f2 100%
+    );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Subtle concrete grain texture for selected surfaces */
+@utility grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* Registration mark corners, print-style, on framed surfaces */
+@utility frame-corners {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+  }
+
+  &::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1px solid var(--color-concrete);
+    border-left: 1px solid var(--color-concrete);
+  }
+
+  &::after {
+    right: -1px;
+    bottom: -1px;
+    border-right: 1px solid var(--color-concrete);
+    border-bottom: 1px solid var(--color-concrete);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Component animation helpers
+------------------------------------------------------------------- */
+
+@keyframes role-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.role-in {
+  display: inline-block;
+  animation: role-in 480ms ease both;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-in {
+  animation: menu-in 220ms ease both;
+}
+
+/* ------------------------------------------------------------------
+   Active navigation state, added in Step 5
+------------------------------------------------------------------- */
+
+.nav-link.is-active {
+  color: var(--color-white);
+}
+
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
