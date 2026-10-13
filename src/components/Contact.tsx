@@ -60,7 +60,7 @@ export default function Contact() {
             </Reveal>
 
             <Reveal delay={140}>
-              <p className="mt-6 max-w-[52ch] text-base leading-relaxed text-concrete sm:text-lg">
+              <p className="mt-6 max-w-[52ch] text-base leading-relaxed text-bone sm:text-lg">
                 {CONTACT.body}
               </p>
             </Reveal>

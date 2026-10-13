@@ -8,9 +8,8 @@
   /* Monochrome palette */
   --color-ink: #0a0a0b;       /* near black, page base */
   --color-coal: #151517;      /* charcoal, raised surfaces */
-  --color-iron: #101013;      /* subtle tonal band between sections */
   --color-graphite: #26262b;  /* borders, hard offset shadows */
-  --color-concrete: #8c8c90;  /* secondary text */
+  --color-concrete: #b5b2ac;  /* small labels, minimum brightness */
   --color-bone: #d8d5cf;      /* light concrete, primary text */
 
   /* Typography */
@@ -240,6 +239,13 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* Outlined display text, transparent fill with chrome-silver stroke */
+@utility outline-text {
+  color: #c4c1bb;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px #c4c1bb;
 }
 
 /* Subtle concrete grain texture for selected surfaces */

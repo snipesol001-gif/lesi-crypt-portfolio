@@ -3,8 +3,6 @@
    wording stays in one place and is easy to edit later.
 ------------------------------------------------------------------- */
 
-// TODO: replace with a verified number of years before launch.
-// Example: "3"
 export const YEARS_IN_WEB3 = "4+";
 
 export const SITE = {
@@ -190,6 +188,33 @@ export const BUILDING_PROJECTS = [
   },
 ];
 
+export const BUILDING_MINI_PROJECTS = [
+  {
+    name: "WORTHY ($WORTHY)",
+    role: "Community Builder",
+    image: "/images/logo-worthy.png",
+    imageAlt: "WORTHY logo, a wolf-themed project emblem",
+    bio: "A Solana community token built around The Trial: raids, meme challenges and a pack that stays when the noise fades. Wolf-themed, community-first, and made for the few who actually show up.",
+    xUrl: "https://x.com/TheWorthyDev",
+  },
+  {
+    name: "404 CAMEL ($C404)",
+    role: "Project Manager",
+    image: "/images/logo-camel.png",
+    imageAlt: "404 CAMEL logo, a camel-themed project emblem",
+    bio: "A Solana meme token lost in the crypto desert, building alongside the AmunChain ecosystem. Bull market not found, yet. Community first, with exclusive NFTs coming soon.",
+    xUrl: "https://x.com/C404Camel",
+  },
+  {
+    name: "Honest Egg ($HEGG)",
+    role: "Community Manager",
+    image: "/images/logo-egg.png",
+    imageAlt: "Honest Egg logo, an egg-themed project emblem",
+    bio: "A Solana community project built around one idea: transparency first, community always. Home of the $HEGG community.",
+    xUrl: "https://x.com/HonestEggSOL",
+  },
+];
+
 export const X_QUOTES = [
   {
     quote:
@@ -220,7 +245,6 @@ export const CONTACT_METHODS = [
   { label: "Telegram", value: "@lesi_crypt", href: "https://t.me/lesi_crypt" },
   { label: "Website", value: "lesicrypt.com", href: "https://lesicrypt.com" },
 ];
-
 
 export const FOOTER_SOCIAL = [
   { label: "X", href: "https://x.com/lesi_crypt" },

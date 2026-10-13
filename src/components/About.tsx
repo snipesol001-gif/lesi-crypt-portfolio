@@ -35,7 +35,7 @@ export default function About() {
               </p>
             </Reveal>
             <Reveal delay={200}>
-              <p className="max-w-[62ch] text-base leading-relaxed text-concrete sm:text-lg">
+              <p className="max-w-[62ch] text-base leading-relaxed text-bone sm:text-lg">
                 {ABOUT.paragraphs[1]}
               </p>
             </Reveal>

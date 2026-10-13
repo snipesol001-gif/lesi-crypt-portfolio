@@ -1,5 +1,5 @@
 import { Globe, ArrowUpRight } from "lucide-react";
-import { BUILDING_PROJECTS } from "../data/site";
+import { BUILDING_PROJECTS, BUILDING_MINI_PROJECTS } from "../data/site";
 import Reveal from "./Reveal";
 
 const [quantum, parlay] = BUILDING_PROJECTS;
@@ -34,7 +34,7 @@ function ProjectCard({ project }: { project: (typeof BUILDING_PROJECTS)[number] 
         </div>
       </div>
 
-      <p className="mt-6 text-[0.95rem] leading-relaxed text-concrete">
+      <p className="mt-6 text-[0.95rem] leading-relaxed text-bone">
         {project.description}
       </p>
 
@@ -85,12 +85,64 @@ function ProjectCard({ project }: { project: (typeof BUILDING_PROJECTS)[number] 
   );
 }
 
+function MiniProjectCard({
+  project,
+}: {
+  project: (typeof BUILDING_MINI_PROJECTS)[number];
+}) {
+  return (
+    <article className="flex h-full flex-col border border-graphite bg-coal p-5 shadow-hard transition-all duration-300 hover:-translate-y-1 hover:border-concrete hover:shadow-hard-lg sm:p-6">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+        <div className="h-14 w-14 shrink-0 overflow-hidden rounded-[14px] border border-graphite bg-ink">
+          <img
+            src={project.image}
+            alt={project.imageAlt}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-contain"
+          />
+        </div>
+        <p className="flex shrink-0 items-center gap-2.5 font-mono text-[0.62rem] uppercase leading-[1.4] tracking-[0.14em] text-bone sm:text-[0.75rem] sm:tracking-[0.18em]">
+          <span
+            aria-hidden="true"
+            className="h-2 w-2 animate-pulse rounded-full bg-bone"
+          />
+          Currently Building
+        </p>
+      </div>
+
+      <h3 className="mt-5 font-display text-lg uppercase tracking-[0.02em] text-white sm:text-xl">
+        {project.name}
+      </h3>
+      <p className="mt-1.5 text-sm font-medium text-bone">{project.role}</p>
+
+      <p className="mt-4 text-sm leading-relaxed text-bone">
+        {project.bio}
+      </p>
+
+      <div className="mt-auto pt-5">
+        <div className="border-t border-graphite pt-5">
+          <a
+            href={project.xUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ghost"
+          >
+            <ArrowUpRight size={15} strokeWidth={1.75} aria-hidden="true" />
+            Visit X
+          </a>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function CurrentlyBuilding() {
   return (
     <section
       id="currently-building"
       aria-labelledby="building-heading"
-      className="section-pad border-y border-graphite bg-iron"
+      className="section-pad border-y border-graphite"
     >
       <div className="wrap">
         <Reveal>
@@ -106,7 +158,7 @@ export default function CurrentlyBuilding() {
 
         <div className="mt-10 grid gap-6 lg:grid-cols-12 lg:items-end">
           <Reveal delay={140} className="lg:col-span-5">
-            <p className="max-w-[44ch] text-sm leading-relaxed text-concrete sm:text-base">
+            <p className="max-w-[44ch] text-sm leading-relaxed text-bone sm:text-base">
               Live engagements. This section refreshes as new work goes public.
             </p>
           </Reveal>
@@ -127,6 +179,14 @@ export default function CurrentlyBuilding() {
           <Reveal delay={100}>
             <ProjectCard project={parlay} />
           </Reveal>
+        </div>
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:mt-10 lg:grid-cols-3 lg:gap-8">
+          {BUILDING_MINI_PROJECTS.map((project, index) => (
+            <Reveal key={project.name} delay={index * 100} className="h-full">
+              <MiniProjectCard project={project} />
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

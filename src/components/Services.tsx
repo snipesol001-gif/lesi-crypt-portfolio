@@ -1,4 +1,4 @@
-import { Mic, Users, KanbanSquare, PenLine } from "lucide-react";
+import { Mic, Users, KanbanSquare, PenLine, ArrowDown } from "lucide-react";
 import { SERVICES } from "../data/site";
 import Reveal from "./Reveal";
 
@@ -10,7 +10,7 @@ export default function Services() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="section-pad border-y border-graphite bg-iron"
+      className="section-pad border-y border-graphite"
     >
       <div className="wrap">
         <Reveal>
@@ -24,22 +24,33 @@ export default function Services() {
           </div>
         </Reveal>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-12 lg:items-end">
-          <Reveal delay={80} className="lg:col-span-7">
-            <h2
-              id="services-heading"
-              className="text-balance font-display text-[clamp(2.5rem,6vw,4.5rem)] uppercase leading-[1] text-white"
-            >
-              What I do, end to end.
-            </h2>
-          </Reveal>
-          <Reveal delay={140} className="lg:col-span-5">
-            <p className="max-w-[44ch] text-sm leading-relaxed text-concrete lg:ml-auto lg:pb-1.5 lg:text-right">
-              Four disciplines. One operator. Engaged individually or as a
-              package for founders who want a partner, not another vendor.
-            </p>
-          </Reveal>
-        </div>
+        <Reveal delay={80}>
+          <h2
+            id="services-heading"
+            className="mt-10 font-display text-[clamp(2.25rem,5.5vw,4rem)] uppercase leading-[1.04] text-white"
+          >
+            <span className="block">FOUR SKILLS.</span>
+            <span className="block">ONE OPERATOR.</span>
+            <span className="block outline-text">ZERO NOISE.</span>
+          </h2>
+        </Reveal>
+
+        <Reveal delay={140}>
+          <p className="mt-6 max-w-[54ch] text-[1.05rem] font-medium leading-[1.6] text-bone sm:text-[1.2rem] lg:text-[1.35rem]">
+            Hire one, or hire the whole package. Don't take my word for it,
+            scroll down and check the work.
+          </p>
+        </Reveal>
+
+        <Reveal delay={200}>
+          <a
+            href="#proof-of-work"
+            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-bone underline underline-offset-4 transition-colors duration-200 hover:text-white"
+          >
+            See the work
+            <ArrowDown size={15} strokeWidth={2} aria-hidden="true" />
+          </a>
+        </Reveal>
 
         <Reveal delay={120}>
           <ul className="grain frame-corners mt-12 divide-y divide-graphite border border-graphite bg-coal shadow-hard-lg lg:mt-16">
@@ -56,7 +67,7 @@ export default function Services() {
                   <h3 className="flex items-center font-display text-lg uppercase leading-snug tracking-[0.02em] text-white transition-colors duration-200 group-hover:text-bone lg:block lg:text-[1.5rem]">
                     {service.title}
                   </h3>
-                  <p className="col-span-2 max-w-[52ch] text-[0.95rem] leading-relaxed text-concrete lg:col-span-1 lg:pt-1.5">
+                  <p className="col-span-2 max-w-[52ch] text-[0.95rem] leading-relaxed text-bone lg:col-span-1 lg:pt-1.5">
                     {service.description}
                   </p>
                 </li>

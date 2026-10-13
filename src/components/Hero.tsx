@@ -69,7 +69,7 @@ export default function Hero() {
             </Reveal>
 
             <Reveal delay={290}>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-concrete sm:text-lg">
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-bone sm:text-lg">
                 {HERO.body}
               </p>
             </Reveal>

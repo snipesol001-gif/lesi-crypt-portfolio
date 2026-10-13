@@ -82,7 +82,7 @@ export default function ProofOfWork() {
                 <CompletedBadge />
               </div>
 
-              <p className="mt-6 max-w-[68ch] text-[0.95rem] leading-relaxed text-concrete">
+              <p className="mt-6 max-w-[68ch] text-[0.95rem] leading-relaxed text-bone">
                 {love.description}
               </p>
 
@@ -126,7 +126,7 @@ export default function ProofOfWork() {
                 <CompletedBadge />
               </div>
 
-              <p className="mt-6 max-w-[68ch] text-[0.95rem] leading-relaxed text-concrete">
+              <p className="mt-6 max-w-[68ch] text-[0.95rem] leading-relaxed text-bone">
                 {spaces.description}
               </p>
 
