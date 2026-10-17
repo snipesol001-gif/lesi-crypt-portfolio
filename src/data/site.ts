@@ -205,14 +205,6 @@ export const BUILDING_MINI_PROJECTS = [
     bio: "A Solana meme token lost in the crypto desert, building alongside the AmunChain ecosystem. Bull market not found, yet. Community first, with exclusive NFTs coming soon.",
     xUrl: "https://x.com/C404Camel",
   },
-  {
-    name: "Honest Egg ($HEGG)",
-    role: "Community Manager",
-    image: "/images/logo-egg.png",
-    imageAlt: "Honest Egg logo, an egg-themed project emblem",
-    bio: "A Solana community project built around one idea: transparency first, community always. Home of the $HEGG community.",
-    xUrl: "https://x.com/HonestEggSOL",
-  },
 ];
 
 export const X_QUOTES = [

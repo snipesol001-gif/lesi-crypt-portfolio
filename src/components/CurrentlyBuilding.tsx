@@ -181,7 +181,7 @@ export default function CurrentlyBuilding() {
           </Reveal>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:mt-10 lg:grid-cols-3 lg:gap-8">
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:mt-10 lg:gap-10">
           {BUILDING_MINI_PROJECTS.map((project, index) => (
             <Reveal key={project.name} delay={index * 100} className="h-full">
               <MiniProjectCard project={project} />
