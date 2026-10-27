@@ -2,11 +2,15 @@ import { Globe, ArrowUpRight } from "lucide-react";
 import { BUILDING_PROJECTS, BUILDING_MINI_PROJECTS } from "../data/site";
 import Reveal from "./Reveal";
 
-const [quantum, parlay] = BUILDING_PROJECTS;
+const [quantum] = BUILDING_PROJECTS;
 
-function ProjectCard({ project }: { project: (typeof BUILDING_PROJECTS)[number] }) {
+function FeaturedProjectCard({
+  project,
+}: {
+  project: (typeof BUILDING_PROJECTS)[number];
+}) {
   return (
-    <article className="flex flex-col border border-graphite bg-coal p-6 shadow-hard transition-all duration-300 hover:-translate-y-1 hover:border-concrete hover:shadow-hard-lg sm:p-8">
+    <article className="flex flex-col border border-graphite bg-coal p-6 shadow-hard transition-all duration-300 hover:-translate-y-1 hover:border-concrete hover:shadow-hard-lg sm:p-8 lg:p-10">
       <div className="flex items-center gap-3">
         <span
           aria-hidden="true"
@@ -16,8 +20,8 @@ function ProjectCard({ project }: { project: (typeof BUILDING_PROJECTS)[number] 
         <span aria-hidden="true" className="h-px flex-1 bg-graphite" />
       </div>
 
-      <div className="mt-6 flex items-center gap-5">
-        <div className="h-16 w-16 shrink-0 overflow-hidden rounded-[14px] border border-graphite bg-ink sm:h-[4.25rem] sm:w-[4.25rem]">
+      <div className="mt-6 grid items-start gap-6 sm:mt-8 sm:grid-cols-[4.25rem_1fr] sm:gap-8 lg:grid-cols-[8.5rem_1fr] lg:gap-12">
+        <div className="h-16 w-16 overflow-hidden rounded-[14px] border border-graphite bg-ink sm:h-[4.25rem] sm:w-[4.25rem] lg:h-[8.5rem] lg:w-[8.5rem]">
           <img
             src={project.image}
             alt={project.imageAlt}
@@ -26,19 +30,21 @@ function ProjectCard({ project }: { project: (typeof BUILDING_PROJECTS)[number] 
             className="h-full w-full object-contain"
           />
         </div>
+
         <div>
-          <h3 className="font-display text-xl uppercase tracking-[0.02em] text-white sm:text-2xl">
+          <h3 className="font-display text-xl uppercase tracking-[0.02em] text-white sm:text-2xl lg:text-3xl">
             {project.name}
           </h3>
-          <p className="mt-1.5 text-sm font-medium text-bone">{project.role}</p>
+          <p className="mt-1.5 text-sm font-medium text-bone lg:text-base">
+            {project.role}
+          </p>
+          <p className="mt-4 max-w-[72ch] text-[0.95rem] leading-relaxed text-bone lg:text-base">
+            {project.description}
+          </p>
         </div>
       </div>
 
-      <p className="mt-6 text-[0.95rem] leading-relaxed text-bone">
-        {project.description}
-      </p>
-
-      <ul className="mt-6 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+      <ul className="mt-6 grid gap-x-6 gap-y-2.5 sm:grid-cols-2 lg:grid-cols-3">
         {project.bullets.map((bullet) => (
           <li key={bullet} className="flex items-start gap-2.5 text-sm text-bone">
             <span
@@ -93,13 +99,21 @@ function MiniProjectCard({
   return (
     <article className="flex h-full flex-col border border-graphite bg-coal p-5 shadow-hard transition-all duration-300 hover:-translate-y-1 hover:border-concrete hover:shadow-hard-lg sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
-        <div className="h-14 w-14 shrink-0 overflow-hidden rounded-[14px] border border-graphite bg-ink">
+        <div
+          className={`h-14 w-14 shrink-0 overflow-hidden border border-graphite bg-ink ${
+            project.roundLogo ? "rounded-full" : "rounded-[14px]"
+          }`}
+        >
           <img
             src={project.image}
             alt={project.imageAlt}
             loading="lazy"
             decoding="async"
-            className="h-full w-full object-contain"
+            className={
+              project.roundLogo
+                ? "h-full w-full scale-[1.05] object-cover"
+                : "h-full w-full object-contain"
+            }
           />
         </div>
         <p className="flex shrink-0 items-center gap-2.5 font-mono text-[0.62rem] uppercase leading-[1.4] tracking-[0.14em] text-bone sm:text-[0.75rem] sm:tracking-[0.18em]">
@@ -172,16 +186,13 @@ export default function CurrentlyBuilding() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-8 lg:mt-16 lg:grid-cols-2 lg:gap-10">
+        <div className="mt-12 lg:mt-16">
           <Reveal>
-            <ProjectCard project={quantum} />
-          </Reveal>
-          <Reveal delay={100}>
-            <ProjectCard project={parlay} />
+            <FeaturedProjectCard project={quantum} />
           </Reveal>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:mt-10 lg:gap-10">
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:mt-10 lg:grid-cols-3 lg:gap-8">
           {BUILDING_MINI_PROJECTS.map((project, index) => (
             <Reveal key={project.name} delay={index * 100} className="h-full">
               <MiniProjectCard project={project} />

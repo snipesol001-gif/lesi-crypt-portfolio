@@ -164,31 +164,20 @@ export const BUILDING_PROJECTS = [
       { label: "Visit X", href: "https://x.com/QuantumDefiQTM" },
     ],
   },
-  {
-    name: "ParlayIt (PARLAY)",
-    role: "Project Manager / Community Growth",
-    image: "/images/logo-parlayit.png",
-    imageAlt:
-      "ParlayIt logo, a gradient letter P inside a circular ring",
-    description:
-      "A Web3 sports prediction ecosystem transforming traditional parlays into ownable digital assets. Combining NFT ownership, competitive strategy, sports communities and GameFi mechanics into one premium experience.",
-    bullets: [
-      "Community Strategy",
-      "Growth",
-      "Project Management",
-      "Marketing Coordination",
-      "User Feedback",
-      "Community Development",
-    ],
-    tags: ["NFT", "GameFi", "SportsFi", "Web3", "Community"],
-    links: [
-      { label: "Visit Website", href: "https://parlayit.io" },
-      { label: "Visit X", href: "https://x.com/Parlayit_io" },
-    ],
-  },
 ];
 
+/* roundLogo: true renders the logo in a perfect circle instead of a
+   rounded square, for coins supplied on a square background. */
 export const BUILDING_MINI_PROJECTS = [
+  {
+    name: "Quality Of Life Token (QOLT)",
+    role: "Contributor / Builder",
+    image: "/images/qolt-token.png",
+    imageAlt: "Quality Of Life Token logo, a round coin emblem",
+    bio: "A mission-based charitable utility initiative supporting vulnerable groups who are isolated and alone, including seniors, veterans and people living with disabilities.",
+    xUrl: "https://x.com/QOLTtoken",
+    roundLogo: true,
+  },
   {
     name: "WORTHY ($WORTHY)",
     role: "Community Builder",
@@ -196,14 +185,16 @@ export const BUILDING_MINI_PROJECTS = [
     imageAlt: "WORTHY logo, a wolf-themed project emblem",
     bio: "A Solana community token built around The Trial: raids, meme challenges and a pack that stays when the noise fades. Wolf-themed, community-first, and made for the few who actually show up.",
     xUrl: "https://x.com/TheWorthyDev",
+    roundLogo: false,
   },
   {
-    name: "404 CAMEL ($C404)",
-    role: "Project Manager",
-    image: "/images/logo-camel.png",
-    imageAlt: "404 CAMEL logo, a camel-themed project emblem",
-    bio: "A Solana meme token lost in the crypto desert, building alongside the AmunChain ecosystem. Bull market not found, yet. Community first, with exclusive NFTs coming soon.",
-    xUrl: "https://x.com/C404Camel",
+    name: "Honest Egg ($HEGG)",
+    role: "Community Manager",
+    image: "/images/logo-egg.png",
+    imageAlt: "Honest Egg logo, an egg-themed project emblem",
+    bio: "A Solana community project built around one idea: transparency first, community always. Home of the $HEGG community.",
+    xUrl: "https://x.com/HonestEggSOL",
+    roundLogo: false,
   },
 ];
 
