@@ -187,15 +187,16 @@ export const BUILDING_MINI_PROJECTS = [
     xUrl: "https://x.com/TheWorthyDev",
     roundLogo: false,
   },
-  {
-    name: "Honest Egg ($HEGG)",
-    role: "Community Manager",
-    image: "/images/logo-egg.png",
-    imageAlt: "Honest Egg logo, an egg-themed project emblem",
-    bio: "A Solana community project built around one idea: transparency first, community always. Home of the $HEGG community.",
-    xUrl: "https://x.com/HonestEggSOL",
-    roundLogo: false,
-  },
+// Replace your TravelTrust object with this:
+{
+  name: "TravelTrust",
+  role: "Community Builder",
+  image: "/images/travel-trust.png", // Changed from logo to image
+  imageAlt: "TravelTrust logo",     // Changed from logoAlt to imageAlt
+  bio: "A Web3 travel platform building the trust layer for global travel, connecting travelers with local guides through identity, reputation and secure interactions.",
+  xUrl: "https://x.com/TravelTrust_",
+  roundLogo: false,
+},
 ];
 
 export const X_QUOTES = [
